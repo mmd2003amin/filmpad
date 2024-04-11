@@ -1,3 +1,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "kalameh-black";
+    src: url("/font/Kalameh-Black.ttf");
+  }
+
+  @font-face {
+    font-family: "kalameh-bold";
+    src: url("/font/Kalameh-Bold.ttf");
+  }
+
+  @font-face {
+    font-family: "kalameh-regular";
+    src: url("/font/Kalameh-Regular.ttf");
+  }
+}
+
+@layer components {
+  .centering {
+    @apply flex items-center justify-center;
+  }
+
+  .list-items-header li {
+    @apply centering ml-[18px] cursor-pointer py-1.5;
+  }
+
+  .list-items-menu li {
+    @apply centering justify-between border-b border-[#0f1c2e] w-full p-[13px];
+  }
+
+  .buttons-menu button {
+    @apply bg-primary py-2 px-5 rounded-[30px] text-[14px] mx-0.5 w-full text-[#1b1b1b];
+  }
+
+  .float_menu_holder {
+    background: #00000052;
+    backdrop-filter: blur(5px);
+  }
+
+  .sub-menu {
+    @apply bg-subMenu rounded-[10px] h-fit w-52 py-2 absolute top-14 group-hover:top-9 right-0 opacity-0 group-hover:opacity-100 -z-10 group-hover:z-10 duration-300;
+  }
+
+  .bg-subMenu {
+    background: #101014bd;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 15px #101014e0;
+  }
+}
