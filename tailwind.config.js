@@ -10,6 +10,7 @@ export default {
     extend: {
       colors: {
         darker: "#09111c",
+        darker2 : "#070e17",
         text: "#CCE1FF",
         primary: "#eec932",
         box: "#0D1726",
@@ -20,6 +21,10 @@ export default {
         1200: "1200px",
         1400: "1400px",
       },
+
+      boxShadow : {
+        button : 'inset 0 0 0 40px #070e17',
+      }
     },
   },
   plugins: [],

@@ -6,7 +6,7 @@ import MobileSerial from "./MobileSerial";
 const MobileMenu = ({ openMenu }) => {
   const [openSubMenuGenre, setOpenSubMenuGenre] = useState(false);
   const [openSubMenuSerial, setOpenSubMenuSerial] = useState(false);
-
+  
   return (
     <div
       className={`w-[70%] h-full z-50 bg-box overflow-scroll duration-500 fixed top-0 ${

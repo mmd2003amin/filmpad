@@ -50,4 +50,31 @@
     backdrop-filter: blur(10px);
     box-shadow: 0 0 15px #101014e0;
   }
+
+  .after {
+    content: "";
+    width: calc(100% - 90px);
+    height: 2px;
+    position: relative;
+    display: inline-block;
+    top: 0px;
+    right: 8px;
+    @apply bg-primary lg:w-14;
+  }
+
+  .before {
+    content: " ";
+    height: 5px;
+    margin-left: 5px;
+    display: inline-block;
+    @apply bg-primary w-[5px] hover:w-2 duration-200;
+  }
+
+  .button-footer {
+    @apply p-5 bg-box my-2.5 lg:mt-0 rounded-[10px] centering justify-between hover:shadow-button duration-300 cursor-pointer;
+  }
+
+  .footer-width {
+    @apply xs:max-w-[34rem] md:max-w-[45rem] lg:max-w-[1040px] 1200:max-w-[1140px] 1400:max-w-[1320px];
+  }
 }
