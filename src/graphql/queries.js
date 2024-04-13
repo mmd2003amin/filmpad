@@ -8,4 +8,18 @@ const GET_GENRES = gql`
   }
 `;
 
-export { GET_GENRES };
+const GET_FILMS = gql`
+  query {
+    films {
+      poster
+      imdbScore
+      title
+      production
+      story {
+        text
+      }
+    }
+  }
+`;
+
+export { GET_GENRES , GET_FILMS};

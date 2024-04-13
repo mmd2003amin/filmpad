@@ -77,4 +77,14 @@
   .footer-width {
     @apply xs:max-w-[34rem] md:max-w-[45rem] lg:max-w-[1040px] 1200:max-w-[1140px] 1400:max-w-[1320px];
   }
+
+  .buttons-slider-header {
+    @apply size-10 rounded-full bg-[#3e4dab] centering text-lg font-light text-text cursor-pointer absolute top-[46%] z-50 hover:bg-darker2 transition-all;
+  }
+
+  .hover-featured-card {
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    @apply absolute top-2 right-2 float_menu_holder bg-[#000000b3] rounded-[9px] opacity-0 scale-125 hover:scale-100 hover:opacity-100 duration-300 cursor-pointer;
+  }
 }
