@@ -4,7 +4,7 @@ import Router from "./Router/Router";
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-box">
       <Layout>
         <Router />
       </Layout>

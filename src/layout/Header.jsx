@@ -11,7 +11,7 @@ const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <div className="bg-darker text-text font-regular centering h-20">
+    <div className="text-text font-regular centering h-20 sticky top-0 z-50 bg-darker">
       <div className="px-2 w-full xs:w-[34rem] md:w-[45rem] lg:w-[60rem] 1200:w-[71rem] 1400:w-[82.5rem] mx-auto centering justify-between">
         <IoMenu
           className="text-4xl lg:hidden z-10"
@@ -63,7 +63,7 @@ const Header = () => {
         onClick={() => setOpenMenu(false)}
         className={`${
           openMenu ? "opacity-100 z-10" : "opacity-0 -z-10"
-        } duration-150 fixed w-full h-full float_menu_holder`}
+        } duration-150 fixed w-full h-full float_menu_holder lg:hidden`}
       ></div>
 
       <MobileMenu openMenu={openMenu} />

@@ -12,7 +12,7 @@ const FeaturedSlider = () => {
   const { data } = useQuery(GET_FILMS);
 
   return (
-    <div className="bg-darker pt-10 mb-[60px] text-text">
+    <div className="bg-darker py-10 mb-[60px] text-text z-10">
       <Swiper
         className="footer-width mx-auto relative"
         slidesPerView={preView()}

@@ -42,7 +42,7 @@
   }
 
   .sub-menu {
-    @apply bg-subMenu rounded-[10px] h-fit w-52 py-2 absolute top-14 group-hover:top-9 right-0 opacity-0 group-hover:opacity-100 -z-10 group-hover:z-10 duration-300;
+    @apply bg-subMenu rounded-[10px] h-fit w-52 py-2 absolute invisible group-hover:visible top-14 group-hover:top-9 right-0 opacity-0 group-hover:opacity-100 duration-300;
   }
 
   .bg-subMenu {
@@ -86,5 +86,17 @@
     width: calc(100% - 16px);
     height: calc(100% - 16px);
     @apply absolute top-2 right-2 float_menu_holder bg-[#000000b3] rounded-[9px] opacity-0 scale-125 hover:scale-100 hover:opacity-100 duration-300 cursor-pointer;
+  }
+
+  .movie-filter {
+    @apply bg-primary text-black px-5 py-2.5 rounded-[14px];
+  }
+
+  .more-filters {
+    @apply centering bg-box rounded-[20px] h-14 w-[13%] relative;
+  }
+
+  .more-filters-mobile {
+    @apply bg-[#131414] mb-4 w-full h-14 rounded-[20px] centering justify-between flex-row-reverse p-5 text-sm;
   }
 }

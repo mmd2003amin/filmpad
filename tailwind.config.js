@@ -14,6 +14,7 @@ export default {
         text: "#CCE1FF",
         primary: "#eec932",
         box: "#0D1726",
+        box2 : "#0f1c2e"
       },
 
       screens: {

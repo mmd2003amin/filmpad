@@ -22,4 +22,12 @@ const GET_FILMS = gql`
   }
 `;
 
-export { GET_GENRES , GET_FILMS};
+const GET_COUNTRIES = gql`
+  query {
+    countries {
+      name
+    }
+  }
+`;
+
+export { GET_GENRES, GET_FILMS, GET_COUNTRIES };
