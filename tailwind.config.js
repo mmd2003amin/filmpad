@@ -10,11 +10,18 @@ export default {
     extend: {
       colors: {
         darker: "#09111c",
-        darker2 : "#070e17",
+        darker2: "#070e17",
         text: "#CCE1FF",
         primary: "#eec932",
         box: "#0D1726",
-        box2 : "#0f1c2e"
+        box2: "#0f1c2e",
+      },
+
+      backgroundImage: {
+        star: "linear-gradient(to right, #f9d423, #e69d00)",
+        double: "linear-gradient(147deg, #FFE53B 0%, #FF2525 74%)",
+        subtitle: "linear-gradient(to right, #00cdac, #02aab0)",
+        play: "linear-gradient(90deg, hsla(279, 95%, 49%, 1) 0%, hsla(295, 96%, 50%, 1) 100%)",
       },
 
       screens: {
@@ -23,9 +30,9 @@ export default {
         1400: "1400px",
       },
 
-      boxShadow : {
-        button : 'inset 0 0 0 40px #070e17',
-      }
+      boxShadow: {
+        button: "inset 0 0 0 40px #070e17",
+      },
     },
   },
   plugins: [],

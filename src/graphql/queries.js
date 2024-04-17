@@ -15,6 +15,9 @@ const GET_FILMS = gql`
       imdbScore
       title
       production
+      background
+      double
+      subtitle
       story {
         text
       }

@@ -1,6 +1,6 @@
 const useStyleSub = (name) => {
   return name === "کشور سازنده"
-    ? "right-[4%]"
+    ? "right-[4%] pt-[68px]"
     : name === "نمایش بر اساس"
     ? "right-[20%] h-fit"
     : name === "رده سنی"

@@ -5,7 +5,7 @@ import { IoFilterSharp } from "react-icons/io5";
 
 const MobileFilters = () => {
   const [mobileMoreFilter, setMobileMoreFilter] = useState(false);
-  console.log(mobileMoreFilter);
+
   return (
     <>
       <div

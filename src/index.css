@@ -99,4 +99,22 @@
   .more-filters-mobile {
     @apply bg-[#131414] mb-4 w-full h-14 rounded-[20px] centering justify-between flex-row-reverse p-5 text-sm;
   }
+
+  .items-cart-film div svg {
+    @apply size-10 rounded-[8px] p-2 mb-1.5;
+  }
+
+  .back-poster {
+    background: linear-gradient(to left, #0f1c2e 105px, transparent);
+    @apply absolute top-0 right-0 rounded-tr-lg h-[152px] w-3/4;
+  }
+
+  .back-poster2 {
+    background: linear-gradient(to top, #0f1c2e 0, transparent);
+    @apply absolute top-0 right-0 h-[155px] w-full;
+  }
+
+  .bg-genre-section {
+    @apply bg-primary rounded-[50px] px-4 py-1 text-black;
+  }
 }
