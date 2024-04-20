@@ -20,24 +20,24 @@ const Details = () => {
   return (
     <>
       {data ? (
-        <>
-          <div className="h-fit">
+        <div className="flex flex-col">
+          <div className="h-full w-full">
             <img
-              className="absolute top-0 right-0 opacity-80 w-full h-[35rem]"
+              className="absolute top-0 right-0 opacity-40 w-full h-[35rem]"
               src={film.background}
               alt={film.title}
             />
 
-            <div className="back-details absolute top-[239px] h-1/2 w-full"></div>
-            <div className="back-poster absolute top-0 right-0 h-[35rem] w-full"></div>
+            <div className="back-details absolute bottom-0 h-[25rem] w-full"></div>
+            <div className="back-poster absolute top-0 right-0 h-[35rem] w-2/3"></div>
 
-            <div className="centering flex-col md:flex-row justify-start md:items-start footer-width mt-10 mx-auto text-text relative">
+            <div className="centering flex-col md:flex-row justify-start md:items-start footer-width mt-10 mx-3 xs:mx-auto text-text relative">
               <PosterDetails data={film} />
               <AboutDetails data={film} />
             </div>
           </div>
 
-          <div className="bg-box2 box-border mt-[47px]">
+          <div className="bg-box2 box-border mt-16 z-10">
             <div className="footer-width mx-auto centering justify-start">
               <div
                 onClick={() => setMore("اطلاعات بیشتر")}
@@ -71,8 +71,10 @@ const Details = () => {
           </div>
 
           <SimilarDetails film={film} />
-        </>
-      ) : <Loader />}
+        </div>
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };

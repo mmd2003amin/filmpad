@@ -8,7 +8,7 @@ const PosterDetails = ({ data }) => {
   const { poster, title, double, subtitle } = data;
   
   return (
-    <div className="w-[50%] md:w-[25%] lg:mr-10 1200:mr-0 1200:w-[21%] relative ml-12 mb-10 md:mb-0">
+    <div className="w-[50%] md:w-[25%] lg:mr-10 1200:mr-0 1200:w-[21%] relative md:ml-12 mb-10 md:mb-0">
       <img className="w-full rounded-[10px]" src={poster} alt={title} />
 
       <div className="absolute top-1 right-1 centering details-item-poster">

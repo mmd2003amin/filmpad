@@ -14,19 +14,21 @@ const MoreInformation = ({ data }) => {
         <p className="text-sm opacity-90 font-bold">{writer}</p>
       </div>
 
-      <div className="mb-5 text-[17px] font-bold centering justify-start">
-        <FaRegStar className="text-primary ml-0.5 text-[20px]" />
-        <h2>ستارگان</h2>
-      </div>
+      {/* <div className=""> */}
+        <div className="mb-5 text-[17px] font-bold centering justify-center xs:justify-start">
+          <FaRegStar className="text-primary ml-0.5 text-[20px]" />
+          <h2>ستارگان</h2>
+        </div>
 
-      <div className="centering justify-start flex-wrap">
-        {actors.split("-").map((actor) => (
-          <div key={actor} className="w-32 centering flex-col mt-6">
-            <img src="/actor.png" alt={actor} className="w-28 rounded-full" />
-            <p className="text-sm mt-5 text-center">{actor}</p>
-          </div>
-        ))}
-      </div>
+        <div className="centering justify-center xs:justify-start flex-wrap">
+          {actors.split("-").map((actor) => (
+            <div key={actor} className="w-32 centering flex-col mt-6">
+              <img src="/actor.png" alt={actor} className="w-28 rounded-full" />
+              <p className="text-sm mt-5 text-center">{actor}</p>
+            </div>
+          ))}
+        </div>
+      {/* </div> */}
     </div>
   );
 };

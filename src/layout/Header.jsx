@@ -7,9 +7,12 @@ import MobileMenu from "../components/templates/MobileMenu";
 import GenreSubMenu from "../components/templates/GenreSubMenu";
 import SerialSubMenu from "../components/templates/SerialSubMenu";
 import { Link } from "react-router-dom";
+import { BsTriangleFill } from "react-icons/bs";
+import Search from "../components/templates/Search";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const [openSearch, setOpenSearch] = useState(false);
 
   return (
     <div className="text-text font-regular centering h-20 sticky top-0 z-50 bg-box2">
@@ -53,8 +56,15 @@ const Header = () => {
             </span>
           </div>
 
-          <div className="lg:bg-[#0D1726] h-[50px] lg:min-w-[50px] w-auto centering rounded-[15px] border border-transparent text-[#cce1ff] cursor-pointer">
+          <div
+            onClick={() => setOpenSearch(true)}
+            className="lg:bg-[#0D1726] h-[50px] group relative lg:min-w-[50px] w-auto centering rounded-[15px] border border-transparent text-[#cce1ff] cursor-pointer"
+          >
             <IoIosSearch className="text-[21px]" />
+            <p className="absolute duration-200 invisible opacity-0 group-hover:opacity-100 group-hover:visible top-[58px] min-w-[50px] py-1 px-2.5 bg-box text-[13px] font-medium rounded-[50px]">
+              جستجو
+            </p>
+            <BsTriangleFill className="absolute duration-200 invisible opacity-0 group-hover:opacity-100 group-hover:visible top-[50px] text-box" />
           </div>
 
           <div className="hidden lg:flex centering text-[14px] border border-transparent rounded-[15px] h-[50px] min-w-[122px] w-auto bg-primary text-black font-semibold px-5 transition-all hover:bg-[#00ff3b] cursor-pointer">
@@ -71,6 +81,7 @@ const Header = () => {
       ></div>
 
       <MobileMenu openMenu={openMenu} />
+      <Search openSearch={openSearch} setOpenSearch={setOpenSearch} />
     </div>
   );
 };
