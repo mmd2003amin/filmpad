@@ -22,6 +22,7 @@ export default {
         double: "linear-gradient(147deg, #FFE53B 0%, #FF2525 74%)",
         subtitle: "linear-gradient(to right, #00cdac, #02aab0)",
         play: "linear-gradient(90deg, hsla(279, 95%, 49%, 1) 0%, hsla(295, 96%, 50%, 1) 100%)",
+        trailer : "linear-gradient(273deg, #ec2208, #ff6377)",
       },
 
       screens: {

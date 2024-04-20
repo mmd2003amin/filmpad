@@ -3,9 +3,10 @@ import shortenStory from "../../helper/shortenStory";
 import { CiStar } from "react-icons/ci";
 import { TiMicrophoneOutline } from "react-icons/ti";
 import { PiSubtitlesLight, PiPlayCircleLight } from "react-icons/pi";
+import { Link } from "react-router-dom";
 
 const Film = ({ data }) => {
-  const { poster, imdbScore, title, background, double, subtitle, story } = data;
+  const { poster, slug,  imdbScore, title, background, double, subtitle, story } = data;
 
   return (
     <div className="w-full bg-box2 rounded-lg centering flex-col items-start relative text-text">
@@ -52,9 +53,9 @@ const Film = ({ data }) => {
         </div>
       </div>
 
-      <button className="bg-primary hover:bg-[#00ff3b] transition-all rounded-md mx-auto mb-2 p-2.5 w-[96%] text-center text-black text-sm font-semibold">
+      <Link to={`/${slug}`} className="bg-primary hover:bg-[#00ff3b] transition-all rounded-md mx-auto mb-2 p-2.5 w-[96%] text-center text-black text-sm font-semibold">
         دانلود و تماشا فیلم
-      </button>
+      </Link>
     </div>
   );
 };

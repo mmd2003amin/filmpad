@@ -6,7 +6,7 @@ import { LuNewspaper } from "react-icons/lu";
 const Footer = () => {
   return (
     <>
-      <div className="centering flex-col justify-between bg-darker text-text mt-24 py-5">
+      <div className="centering flex-col justify-between bg-darker text-text mt-10 py-5">
         <div className="py-2.5 px-[30px] rounded-[50px] bg-box mx-auto centering">
           <img className="size-10" src="/icon.png" alt="icon" />
           <h1 className="font-black mr-0.5">فیلم پد</h1>

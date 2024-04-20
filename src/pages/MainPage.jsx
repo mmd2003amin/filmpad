@@ -28,7 +28,6 @@ const MainPage = () => {
         subMenu={subMenu}
       />
       <MobileFilters />
-
       <div className="centering justify-between flex-col md:flex-row items-start footer-width mx-auto mt-14">
         <FilmsSection />
         <GenreSection />

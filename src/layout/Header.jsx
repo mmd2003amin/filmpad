@@ -6,22 +6,26 @@ import { FaRegBell } from "react-icons/fa6";
 import MobileMenu from "../components/templates/MobileMenu";
 import GenreSubMenu from "../components/templates/GenreSubMenu";
 import SerialSubMenu from "../components/templates/SerialSubMenu";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <div className="text-text font-regular centering h-20 sticky top-0 z-50 bg-darker">
+    <div className="text-text font-regular centering h-20 sticky top-0 z-50 bg-box2">
       <div className="px-2 w-full xs:w-[34rem] md:w-[45rem] lg:w-[60rem] 1200:w-[71rem] 1400:w-[82.5rem] mx-auto centering justify-between">
         <IoMenu
           className="text-4xl lg:hidden z-10"
           onClick={() => setOpenMenu(true)}
         />
 
-        <div className="absolute lg:sticky w-32 left-0 right-0 mx-auto centering">
+        <Link
+          to="/"
+          className="absolute lg:sticky w-32 left-0 right-0 mx-auto centering"
+        >
           <img className="size-10" src="/icon.png" alt="icon" />
           <h1 className="font-black mr-0.5">فیلم پد</h1>
-        </div>
+        </Link>
 
         <ul className="hidden lg:flex centering list-items-header w-[80%] mx-5 text-[15px]">
           <li className="relative group">
@@ -62,8 +66,8 @@ const Header = () => {
       <div
         onClick={() => setOpenMenu(false)}
         className={`${
-          openMenu ? "opacity-100 z-10" : "opacity-0 -z-10"
-        } duration-150 fixed w-full h-full float_menu_holder lg:hidden`}
+          openMenu ? "opacity-100 z-10 visible" : "opacity-0 -z-10 invisible"
+        } duration-150 fixed top-0 right-0 w-full h-full float_menu_holder lg:hidden`}
       ></div>
 
       <MobileMenu openMenu={openMenu} />

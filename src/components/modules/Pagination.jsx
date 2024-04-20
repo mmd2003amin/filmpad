@@ -4,7 +4,7 @@ const listItems = ["قبلی", "1", "2", "3", "4", "بعدی"];
 
 const Pagination = () => {
   const [page, setPage] = useState(1);
-  console.log(page);
+
   const paginationHandler = (e) => {
     const name = e.target.innerText;
 

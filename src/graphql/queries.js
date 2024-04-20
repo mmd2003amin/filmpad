@@ -18,6 +18,16 @@ const GET_FILMS = gql`
       background
       double
       subtitle
+      slug
+      time
+      country
+      actors
+      director
+      trailer
+      writer
+      genres {
+        name
+      }
       story {
         text
       }

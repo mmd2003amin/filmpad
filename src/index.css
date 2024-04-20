@@ -117,4 +117,21 @@
   .bg-genre-section {
     @apply bg-primary rounded-[50px] px-4 py-1 text-black;
   }
+
+  .back-details {
+    padding: 120px 0 70px;
+    background: linear-gradient(to bottom, rgba(247, 247, 248, 0), #0d1726);
+  }
+
+  .details-item-poster svg {
+    @apply size-[30px] rounded-md p-1 ml-1;
+  }
+
+  .details-item-bottom-poster p {
+    @apply duration-200 absolute text-[12px] font-bold bg-box2 rounded-md p-2 bottom-14 opacity-0;
+  }
+
+  .comment-inputs input {
+    @apply bg-box2 outline-none rounded-md text-[#8e939b] px-[15px] text-sm font-medium;
+  }
 }
