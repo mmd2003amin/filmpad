@@ -53,7 +53,9 @@ const Search = ({ openSearch, setOpenSearch }) => {
           </h1>
         )}
 
-        <NotSearched data={data} search={search} setSearch={setSearch} />
+        {data && (
+          <NotSearched data={data} search={search} setSearch={setSearch} />
+        )}
       </div>
     </div>
   );

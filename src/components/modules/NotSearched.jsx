@@ -7,7 +7,7 @@ const NotSearched = ({ data, search, setSearch }) => {
       {!search && (
         <div className="footer-width lg:w-[900px] mx-3 xs:mx-auto">
           <h1 className="text-[16px] font-bold mb-2">ترند ها</h1>
-          <div className="">
+          <div>
             {data.films.slice(2, 9).map((film) => (
               <div
                 className="centering justify-start border-b border-text px-2 py-2"
