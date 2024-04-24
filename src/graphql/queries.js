@@ -43,4 +43,15 @@ const GET_COUNTRIES = gql`
   }
 `;
 
-export { GET_GENRES, GET_FILMS, GET_COUNTRIES };
+const GET_USERS = gql`
+  query {
+    clients {
+      userName
+      email
+      password
+      number
+    }
+  }
+`;
+
+export { GET_GENRES, GET_FILMS, GET_COUNTRIES, GET_USERS };

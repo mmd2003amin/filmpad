@@ -11,7 +11,7 @@ const Comments = () => {
     text: "",
   });
 
-  const [createComment, { data }] = useMutation(CREATE_COMMENT, {
+  const [createComment] = useMutation(CREATE_COMMENT, {
     variables: {
       name: comment.name,
       email: comment.email,

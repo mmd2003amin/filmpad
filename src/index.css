@@ -134,4 +134,13 @@
   .comment-inputs input {
     @apply bg-box2 outline-none rounded-md text-[#8e939b] px-[15px] text-sm font-medium;
   }
+
+  .form-inputs input {
+    @apply text-sm font-medium border-[3px]  focus:border-[#14253e] duration-300 outline-none h-14 w-full rounded-[10px] px-2.5 my-3 bg-transparent;
+  }
+
+  .form-inputs span {
+    text-shadow: 1px 1px 6px red;
+    @apply text-[12px] font-medium text-red-600 mr-3;
+  }
 }

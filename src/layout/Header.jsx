@@ -67,9 +67,12 @@ const Header = () => {
             <BsTriangleFill className="absolute duration-200 invisible opacity-0 group-hover:opacity-100 group-hover:visible top-[50px] text-box" />
           </div>
 
-          <div className="hidden lg:flex centering text-[14px] border border-transparent rounded-[15px] h-[50px] min-w-[122px] w-auto bg-primary text-black font-semibold px-5 transition-all hover:bg-[#00ff3b] cursor-pointer">
+          <Link
+            to="/login"
+            className="hidden lg:flex centering text-[14px] border border-transparent rounded-[15px] h-[50px] min-w-[122px] w-auto bg-primary text-black font-semibold px-5 transition-all hover:bg-[#00ff3b] cursor-pointer"
+          >
             ورود / عضویت
-          </div>
+          </Link>
         </div>
       </div>
 

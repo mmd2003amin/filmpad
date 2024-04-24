@@ -22,4 +22,27 @@ const CREATE_COMMENT = gql`
   }
 `;
 
-export { CREATE_COMMENT };
+const CREATE_USER = gql`
+  mutation createBy(
+    $userName: String!
+    $email: String!
+    $number: String!
+    $password: String!
+  ) {
+    createClient(
+      data: {
+        userName: $userName
+        email: $email
+        password: $password
+        number: $number
+      }
+    ) {
+      email
+      userName
+      number
+      password
+    }
+  }
+`;
+
+export { CREATE_COMMENT, CREATE_USER };

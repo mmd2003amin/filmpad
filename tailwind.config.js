@@ -33,6 +33,8 @@ export default {
 
       boxShadow: {
         button: "inset 0 0 0 40px #070e17",
+        form : "0 0 200px 0 rgb(0 0 0 / 20%)",
+        buttonForm: "0 8px 60px 0 #eec93247",
       },
     },
   },
