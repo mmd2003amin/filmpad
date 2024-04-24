@@ -6,9 +6,11 @@ import { GET_USERS } from "../graphql/queries";
 import { useQuery } from "@apollo/client";
 import { notify } from "../utils/Notify";
 import JSXLogin from "../components/modules/JSXLogin";
+import authorization from "../utils/authorization";
 
 const Login = () => {
   const { data } = useQuery(GET_USERS);
+  authorization();
   const navigate = useNavigate();
 
   const loginHandler = (values) => {
@@ -21,6 +23,7 @@ const Login = () => {
         );
 
       if (findUser) {
+        localStorage.setItem("user", JSON.stringify(values));
         setTimeout(() => navigate("/dashboard"), 1000);
         notify("success", "با موفقیت وارد شدید!");
       } else {

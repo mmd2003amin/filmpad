@@ -9,10 +9,12 @@ import SerialSubMenu from "../components/templates/SerialSubMenu";
 import { Link } from "react-router-dom";
 import { BsTriangleFill } from "react-icons/bs";
 import Search from "../components/templates/Search";
+import { LuLayoutDashboard } from "react-icons/lu";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
+  const loginUser = localStorage.getItem("user") || [];
 
   return (
     <div className="text-text font-regular centering h-20 sticky top-0 z-50 bg-box2">
@@ -61,7 +63,7 @@ const Header = () => {
             className="lg:bg-[#0D1726] h-[50px] group relative lg:min-w-[50px] w-auto centering rounded-[15px] border border-transparent text-[#cce1ff] cursor-pointer"
           >
             <IoIosSearch className="text-[21px]" />
-            <p className="absolute duration-200 invisible opacity-0 group-hover:opacity-100 group-hover:visible top-[58px] min-w-[50px] py-1 px-2.5 bg-box text-[13px] font-medium rounded-[50px]">
+            <p className="absolute duration-200 invisible opacity-0 group-hover:opacity-100 group-hover:visible top-[58px] min-w-[50px] py-1.5 px-2.5 bg-box text-[13px] font-medium rounded-[50px]">
               جستجو
             </p>
             <BsTriangleFill className="absolute duration-200 invisible opacity-0 group-hover:opacity-100 group-hover:visible top-[50px] text-box" />
@@ -69,9 +71,24 @@ const Header = () => {
 
           <Link
             to="/login"
-            className="hidden lg:flex centering text-[14px] border border-transparent rounded-[15px] h-[50px] min-w-[122px] w-auto bg-primary text-black font-semibold px-5 transition-all hover:bg-[#00ff3b] cursor-pointer"
+            className={`${
+              loginUser.length ? "hidden" : "hidden lg:centering"
+            } text-[14px] border border-transparent rounded-[15px] h-[50px] min-w-[122px] w-auto bg-primary text-black font-semibold px-5 transition-all hover:bg-[#00ff3b] cursor-pointer`}
           >
             ورود / عضویت
+          </Link>
+
+          <Link
+            to="/dashboard"
+            className={`${
+              loginUser.length ? "hidden lg:flex" : "hidden"
+            } lg:bg-[#0D1726] h-[50px] group relative lg:min-w-[50px] w-auto centering rounded-[15px] border border-transparent text-[#cce1ff] cursor-pointer`}
+          >
+            <LuLayoutDashboard className="text-[21px]" />
+            <p className="absolute duration-200 invisible opacity-0 group-hover:opacity-100 group-hover:visible top-[58px] min-w-20 text-center py-1.5 px-2.5 bg-box text-[13px] font-medium rounded-[50px]">
+              پنل کاربری
+            </p>
+            <BsTriangleFill className="absolute duration-200 invisible opacity-0 group-hover:opacity-100 group-hover:visible top-[50px] text-box" />
           </Link>
         </div>
       </div>
@@ -83,7 +100,7 @@ const Header = () => {
         } duration-150 fixed top-0 right-0 w-full h-full float_menu_holder lg:hidden`}
       ></div>
 
-      <MobileMenu openMenu={openMenu} />
+      <MobileMenu openMenu={openMenu} setOpenMenu={setOpenMenu} />
       <Search openSearch={openSearch} setOpenSearch={setOpenSearch} />
     </div>
   );

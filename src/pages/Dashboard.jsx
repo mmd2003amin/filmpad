@@ -1,7 +1,9 @@
 import React from "react";
+import authorization from "../utils/authorization";
 
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  authorization();
+  return;
 };
 
 export default Dashboard;

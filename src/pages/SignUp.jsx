@@ -4,9 +4,10 @@ import { signUpSchema } from "../utils/validation";
 import { useMutation, useQuery } from "@apollo/client";
 import { CREATE_USER } from "../graphql/mutations";
 import { GET_USERS } from "../graphql/queries";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { notify } from "../utils/Notify";
 import JSXSignUp from "../components/modules/JSXSignUp";
+import authorization from "../utils/authorization";
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -28,7 +29,7 @@ const SignUp = () => {
     },
   });
 
-  const navigate = useNavigate();
+  authorization();
 
   const signUpHandler = async (values) => {
     const { userName, email, number, password, confirmPassword } = values;
@@ -39,8 +40,8 @@ const SignUp = () => {
       const findUser = await data.clients.find((user) => user.email === email);
       if (!findUser) {
         createUser();
+        localStorage.setItem("user", JSON.stringify(values));
         notify("success", "ثبت نام با موفقیت انجام شد!");
-        setTimeout(() => navigate("/dashboard"), 1000);
       } else {
         notify("error", "ایمیل وارد شده از قبل موجود میباشد!");
       }

@@ -32,8 +32,8 @@
     @apply centering justify-between border-b border-[#0f1c2e] w-full p-[13px];
   }
 
-  .buttons-menu button {
-    @apply bg-primary py-2 px-5 rounded-[30px] text-[14px] mx-0.5 w-full text-[#1b1b1b];
+  .buttons-menu a {
+    @apply bg-primary py-2 px-5 text-center rounded-[30px] text-[14px] mx-0.5 w-full text-[#1b1b1b];
   }
 
   .float_menu_holder {
