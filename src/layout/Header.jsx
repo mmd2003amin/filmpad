@@ -82,7 +82,7 @@ const Header = () => {
             to="/dashboard"
             className={`${
               loginUser.length ? "hidden lg:flex" : "hidden"
-            } lg:bg-[#0D1726] h-[50px] group relative lg:min-w-[50px] w-auto centering rounded-[15px] border border-transparent text-[#cce1ff] cursor-pointer`}
+            } lg:bg-[#0D1726] group h-[50px] group relative lg:min-w-[50px] w-auto centering rounded-[15px] border border-transparent text-[#cce1ff] cursor-pointer`}
           >
             <LuLayoutDashboard className="text-[21px]" />
             <p className="absolute duration-200 invisible opacity-0 group-hover:opacity-100 group-hover:visible top-[58px] min-w-20 text-center py-1.5 px-2.5 bg-box text-[13px] font-medium rounded-[50px]">

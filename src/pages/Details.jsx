@@ -28,7 +28,7 @@ const Details = () => {
               alt={film.title}
             />
 
-            <div className="back-details absolute bottom-0 h-[25rem] w-full"></div>
+            <div className="back-details absolute bottom-10 h-[25rem] w-full"></div>
             <div className="back-poster absolute top-0 right-0 h-[35rem] w-2/3"></div>
 
             <div className="centering flex-col md:flex-row justify-start md:items-start footer-width mt-10 mx-3 xs:mx-auto text-text relative">

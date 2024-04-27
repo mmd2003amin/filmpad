@@ -143,4 +143,35 @@
     text-shadow: 1px 1px 6px red;
     @apply text-[12px] font-medium text-red-600 mr-3;
   }
+
+  .items-sidebar-dashboard::before {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 8px 0 0 8px;
+    width: 4px;
+    content: "";
+    position: absolute;
+    background-color: #eec932;
+  }
+
+  .items-head-dashboard svg {
+    @apply size-10 rounded-[8px] bg-[#2e86b140] text-[#2e86b1] cursor-pointer p-2.5;
+  }
+
+  .about-main-dashboard > div {
+    @apply centering justify-between mb-3;
+  }
+
+  .about-main-dashboard > div > div:nth-child(1) {
+    @apply w-2/6 text-sm px-2.5 py-[14px] rounded-md bg-box ml-1.5;
+  }
+
+  .about-main-dashboard > div > div:nth-child(2) {
+    @apply w-4/6 text-sm px-2.5 py-[14px] rounded-md bg-box mr-1.5;
+  }
+
+  .list-req-film td {
+    @apply bg-box py-6 px-2  w-1/5 m-[1px] text-center h-full centering;
+  }
 }

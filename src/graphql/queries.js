@@ -46,10 +46,20 @@ const GET_COUNTRIES = gql`
 const GET_USERS = gql`
   query {
     clients {
+      id
       userName
       email
       password
       number
+      createdAt
+      reqFilms {
+        name
+        type
+        message
+        statuss
+        createdAt
+        id
+      }
     }
   }
 `;
