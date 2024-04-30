@@ -12,7 +12,7 @@ const AboutMainDashboard = () => {
 
   return (
     <>
-      {data && (
+      {findUser && (
         <div className="p-4 about-main-dashboard">
           <div>
             <div className="">نام کاربری</div>

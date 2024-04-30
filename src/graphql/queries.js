@@ -4,6 +4,28 @@ const GET_GENRES = gql`
   query {
     genres {
       name
+      films {
+        poster
+        imdbScore
+        title
+        production
+        background
+        double
+        subtitle
+        slug
+        time
+        country
+        actors
+        director
+        trailer
+        writer
+        genres {
+          name
+        }
+        story {
+          text
+        }
+      }
     }
   }
 `;
