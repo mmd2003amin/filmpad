@@ -4,7 +4,7 @@ const CardFilmDashboard = ({ film }) => {
   return (
     <div
       key={film.title}
-      className="rounded-[15px] w-52 400:w-40 relative mx-auto text-black mb-6 hover:scale-110 duration-300 cursor-pointer"
+      className="rounded-[15px] w-52 400:w-40 relative mx-2 text-black mb-6 hover:scale-110 duration-300 cursor-pointer"
     >
       <img
         src={film.poster}

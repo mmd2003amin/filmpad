@@ -1,29 +1,30 @@
-import React from "react";
-import { GET_FILMS, GET_GENRES } from "../../graphql/queries";
+import React, { useEffect } from "react";
+import { GET_FILMS } from "../../graphql/queries";
 import { useQuery } from "@apollo/client";
 import Film from "../modules/Film";
 import Pagination from "../modules/Pagination";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Empty from "../modules/Empty";
+import { allMovies } from "../../features/products/productsSlice";
 
 const FilmsSection = () => {
-  const { data } = useQuery(GET_FILMS);
-  const genreName = useSelector((state) => state.genre.genre);
-  const genres = useQuery(GET_GENRES);
+  const { data, loading } = useQuery(GET_FILMS);
+  const films = useSelector((state) => state.products.products);
+  const dispatch = useDispatch();
 
-  const filterData =
-    genres.data &&
-    genres.data.genres.filter((genre) => genre.name === genreName);
+  useEffect(() => {
+    setTimeout(() => dispatch(allMovies(data.films)), 1000);
+  }, [loading]);
 
   return (
     <div className="centering flex-col items-start w-full md:w-[68%] ml-1.5 text-text">
-      {genreName && filterData.length ? (
+      {films !== undefined && films.length ? (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mx-1 sm:mx-0">
-          {filterData[0].films.map((film) => (
+          {films.map((film) => (
             <Film key={film.title} data={film} />
           ))}
         </div>
-      ) : genreName && !filterData.length ? (
+      ) : (
         <div className="w-full centering">
           <Empty
             name="فیلمی با مشخصات شما یافت نشد!"
@@ -31,12 +32,8 @@ const FilmsSection = () => {
             img="/movie.png"
           />
         </div>
-      ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mx-1 sm:mx-0">
-          {data &&
-            data.films.map((film) => <Film key={film.title} data={film} />)}
-        </div>
       )}
+
       <Pagination />
     </div>
   );

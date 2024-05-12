@@ -1,56 +1,71 @@
-import React, { useState } from "react";
-import { MdKeyboardArrowDown } from "react-icons/md";
+import React from "react";
 import { IoFilterSharp } from "react-icons/io5";
 import { Switch } from "pretty-checkbox-react";
 import "@djthoms/pretty-checkbox";
-import MovieFilter from "../modules/MovieFilter";
-import GenreFilter from "../modules/GenreFilter";
-import filtersSwitch from "../../constant/filtersSwitch";
+import GenreFilter from "../modules/subMenuMoreFilter/GenreFilter";
 import MoreFilters from "../modules/MoreFilters";
+import { useDispatch, useSelector } from "react-redux";
+import { doubleF, subtitleF } from "../../features/filters/filtersSlice";
+import { closeGenre, closeMoreFilter } from "../../features/close/closeSlice";
+import Type from "../modules/subMenuMoreFilter/Type";
+import { filterHandler } from "../../utils/filterHandler";
+import { GET_FILMS } from "../../graphql/queries";
+import { useQuery } from "@apollo/client";
+import { allMovies } from "../../features/products/productsSlice";
 
-const Filters = ({
-  genre,
-  setGenre,
-  moreFilters,
-  setMoreFilters,
-  subMenu,
-  setSubMenu,
-}) => {
-  const [movieFilter, setMovieFilter] = useState("همه");
+const Filters = () => {
+  const { data } = useQuery(GET_FILMS);
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state.filter);
 
   const genreHandler = (e) => {
-    setGenre((prevState) => !prevState), e.stopPropagation();
+    dispatch(closeGenre(true));
+    e.stopPropagation();
   };
 
   const moreFiltersHandler = (e) => {
-    setMoreFilters((prevState) => !prevState), e.stopPropagation();
+    dispatch(closeMoreFilter(true));
+    e.stopPropagation();
+  };
+
+  const searchHandler = () => {
+    const filter = filterHandler({ films: data, filters: state });
+    dispatch(allMovies(filter));
   };
 
   return (
     <>
-      <div className="hidden lg:flex relative footer-width text-text bg-box2 -mt-[72px] p-2.5 rounded-[30px] text-sm centering justify-between mx-auto z-20">
-        <MovieFilter
-          movieFilter={movieFilter}
-          setMovieFilter={setMovieFilter}
-        />
+      <div className="hidden lg:flex relative footer-width text-text bg-box2 -mt-[85px] p-2.5 rounded-[30px] text-sm centering justify-between mx-auto z-20">
+        <Type />
 
         <div
           onClick={genreHandler}
           className="bg-box h-14 rounded-[20px] centering w-1/12 relative cursor-pointer"
         >
-          <p className="ml-1">ژانر</p>
-          <MdKeyboardArrowDown
-            className={`${genre && "rotate-180"} duration-200 text-lg`}
-          />
-          <GenreFilter genre={genre} />
+          <p className="ml-1">{state.genreF ? state.genreF : "ژانر"}</p>
+
+          <GenreFilter />
         </div>
 
-        {filtersSwitch.map((item) => (
-          <div key={item.id} dir="ltr" className="w-1/12 centering">
-            <Switch shape="fill" color="warning" className="text-xl mt-7" />
-            <p className="ml-2">{item.name}</p>
-          </div>
-        ))}
+        <div dir="ltr" className="w-1/12 centering">
+          <Switch
+            shape="fill"
+            color="warning"
+            className="text-xl mt-7"
+            onClick={() => dispatch(doubleF(!state.doubleF))}
+          />
+          <p className="ml-2">دوبله</p>
+        </div>
+
+        <div dir="ltr" className="w-1/12 centering">
+          <Switch
+            shape="fill"
+            color="warning"
+            className="text-xl mt-7"
+            onClick={() => dispatch(subtitleF(!state.subtitleF))}
+          />
+          <p className="ml-2">زیرنویس</p>
+        </div>
 
         <div
           onClick={moreFiltersHandler}
@@ -60,15 +75,14 @@ const Filters = ({
           <IoFilterSharp />
         </div>
 
-        <div className="centering h-14 rounded-[20px] bg-primary text-black w-[14%] transition-all hover:bg-[#00ff3b] cursor-pointer">
+        <div
+          onClick={searchHandler}
+          className="centering h-14 rounded-[20px] bg-primary text-black w-[14%] transition-all hover:bg-[#00ff3b] cursor-pointer"
+        >
           جستجو
         </div>
 
-        <MoreFilters
-          moreFilters={moreFilters}
-          subMenu={subMenu}
-          setSubMenu={setSubMenu}
-        />
+        <MoreFilters />
       </div>
     </>
   );

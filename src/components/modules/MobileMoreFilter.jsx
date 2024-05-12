@@ -1,27 +1,65 @@
-import React, { useState } from "react";
+import React from "react";
 import listMoreFilters from "../../constant/listMoreFilters";
 import { Switch } from "pretty-checkbox-react";
 import { IoCloseSharp } from "react-icons/io5";
 import { MdKeyboardArrowDown } from "react-icons/md";
-import useSubmenu from "../../hooks/useSubmenu";
-import CardSubMenuMoreFilterMobile from "./CardSubMenuMoreFilterMobile";
+import { useDispatch, useSelector } from "react-redux";
+import { closeSubmenu } from "../../features/close/closeSlice";
+import { doubleF, subtitleF } from "../../features/filters/filtersSlice";
+import { allMovies } from "../../features/products/productsSlice";
+import { filterHandler } from "../../utils/filterHandler";
+import { GET_FILMS } from "../../graphql/queries";
+import { useQuery } from "@apollo/client";
+
+//submenus
+import Country from "./subMenuMoreFilter/country";
+import ShowWith from "./subMenuMoreFilter/showWith";
+import Ages from "./subMenuMoreFilter/ages";
+import IMDbSub from "./subMenuMoreFilter/IMDb";
+import OfTheYearSub from "./subMenuMoreFilter/ofTheYear";
+import UntilTheYearSub from "./subMenuMoreFilter/untilTheYear";
+import GenreFilter from "./subMenuMoreFilter/GenreFilter";
+import Type from "./subMenuMoreFilter/Type";
+import useCloseDispatch, {
+  useCloseDispatchAll,
+} from "../../hooks/useCloseDispatch";
 
 const MobileMoreFilter = ({ mobileMoreFilter, setMobileMoreFilter }) => {
-  const [name, setName] = useState("");
-  const dataSubmenu = useSubmenu(name);
-  const year = ["از سال", "تا سال"];
+  const { data } = useQuery(GET_FILMS);
+  const state = useSelector((state) => state.filter);
+  const dispatch = useDispatch();
+
+  const year = [
+    {
+      id: "تا سال",
+      name: state.untilTheYear ? state.untilTheYear : "تا سال",
+    },
+    {
+      id: "از سال",
+      name: state.ofTheYear ? state.ofTheYear : "از سال",
+    },
+  ];
 
   const showSubMenuHandler = (e) => {
     const text = e.target.innerText;
+    useCloseDispatch(e.target.id, dispatch);
+
     e.stopPropagation();
-    setName((prev) => (prev === text ? "" : text));
+    dispatch(closeSubmenu(text));
+  };
+
+  const searchHandler = () => {
+    const filter = filterHandler({ films: data, filters: state });
+    dispatch(allMovies(filter));
   };
 
   return (
     <div
-      onClick={() => setName("")}
-      className={`float_menu_holder h-[100vh] w-[100vw] fixed top-0 right-0 text-text p-5 overflow-auto duration-300 lg:hidden ${
-        mobileMoreFilter ? "opacity-100 visible z-50" : "opacity-0 -z-10 invisible"
+      onClick={() => useCloseDispatchAll()}
+      className={`bg-filters-mobile h-[100vh] w-[100vw] fixed top-0 right-0 text-text p-5 overflow-auto duration-300 lg:hidden ${
+        mobileMoreFilter
+          ? "opacity-100 visible z-50"
+          : "opacity-0 -z-10 invisible"
       }`}
     >
       <div className="w-full centering justify-between mx-auto">
@@ -36,39 +74,69 @@ const MobileMoreFilter = ({ mobileMoreFilter, setMobileMoreFilter }) => {
         <div className="w-full centering">
           {year.map((item) => (
             <div
-              key={item}
+              key={item.id}
+              id={item.id}
               onClick={showSubMenuHandler}
               className="more-filters-mobile mx-1"
             >
-              <h1 className="w-full text-end py-5">{item}</h1>
+              <h1 className="w-full text-end py-5" id={item.id}>
+                {item.name}
+              </h1>
               <MdKeyboardArrowDown className="text-xl" />
             </div>
           ))}
         </div>
 
-        {listMoreFilters.map((item) => (
+        <div className="more-filters-mobile">
+          <p className="ml-2">دوبله</p>
+          <Switch
+            shape="fill"
+            color="warning"
+            className="text-xl mt-7"
+            onClick={() => dispatch(doubleF(!state.doubleF))}
+          />
+        </div>
+
+        <div className="more-filters-mobile">
+          <p className="ml-2">زیرنویس</p>
+          <Switch
+            shape="fill"
+            color="warning"
+            className="text-xl mt-7"
+            onClick={() => dispatch(subtitleF(!state.subtitleF))}
+          />
+        </div>
+
+        {listMoreFilters().map((item) => (
           <div
             onClick={showSubMenuHandler}
+            id={item.dataset}
             key={item.id}
             className="more-filters-mobile"
           >
-            <h1 className="w-full text-end py-5">{item.name}</h1>
-
-            {item.name.includes("دوبله") ||
-            item.name.includes("زیرنویس") ||
-            item.name.includes("پخش آنلاین") ? (
-              <Switch shape="fill" color="warning" className="text-xl mt-7" />
-            ) : (
-              <MdKeyboardArrowDown className="text-xl" />
-            )}
+            <h1 className="w-full text-end py-5" id={item.dataset}>
+              {item.name}
+            </h1>
+            <MdKeyboardArrowDown className="text-xl" />
           </div>
         ))}
 
-        <div className="more-filters-mobile text-black font-regular font-semibold h-16 justify-center bg-primary">
+        <div
+          onClick={searchHandler}
+          className="more-filters-mobile text-black font-regular font-semibold h-16 justify-center bg-primary"
+        >
           جستجو
         </div>
       </div>
-      <CardSubMenuMoreFilterMobile data={dataSubmenu} name={name} />
+
+      <Country />
+      <ShowWith />
+      <Ages />
+      <IMDbSub />
+      <OfTheYearSub />
+      <UntilTheYearSub />
+      <GenreFilter />
+      <Type />
     </div>
   );
 };

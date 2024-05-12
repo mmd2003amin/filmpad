@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Layout from "./layout/Layout";
 import Router from "./Router/Router";
 import ScrollToTop from "./utils/scrollToTop";

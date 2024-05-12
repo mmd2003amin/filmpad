@@ -1,32 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import FeaturedSlider from "../components/templates/FeaturedSlider";
 import Filters from "../components/templates/Filters";
 import MobileFilters from "../components/templates/MobileFilters";
 import GenreSection from "../components/templates/GenreSection";
 import FilmsSection from "../components/templates/FilmsSection";
+import {
+  closeGenre,
+  closeMoreFilter,
+  closeSubmenu,
+} from "../features/close/closeSlice";
+import { useDispatch } from "react-redux";
 
 const MainPage = () => {
-  const [genre, setGenre] = useState(false);
-  const [moreFilters, setMoreFilters] = useState(false);
-  const [subMenu, setSubMenu] = useState("");
+  const dispatch = useDispatch();
 
   const closeHandler = () => {
-    setGenre(false);
-    setMoreFilters(false);
-    setSubMenu("");
+    dispatch(closeGenre(false));
+    dispatch(closeMoreFilter(false));
+    dispatch(closeSubmenu(""));
   };
 
   return (
     <div onClick={closeHandler}>
       <FeaturedSlider />
-      <Filters
-        genre={genre}
-        setGenre={setGenre}
-        moreFilters={moreFilters}
-        setMoreFilters={setMoreFilters}
-        setSubMenu={setSubMenu}
-        subMenu={subMenu}
-      />
+      <Filters />
       <MobileFilters />
       <div className="centering justify-between flex-col md:flex-row items-start footer-width mx-auto mt-14">
         <FilmsSection />

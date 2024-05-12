@@ -45,6 +45,11 @@
     @apply bg-subMenu rounded-[10px] h-fit w-52 py-2 absolute invisible group-hover:visible top-14 group-hover:top-9 right-0 opacity-0 group-hover:opacity-100 duration-300;
   }
 
+  .bg-filters-mobile {
+    background-color: #1b1f28cc;
+    backdrop-filter: blur(14px);
+  }
+
   .bg-subMenu {
     background: #101014bd;
     backdrop-filter: blur(10px);
@@ -173,5 +178,13 @@
 
   .list-req-film td {
     @apply bg-box py-6 px-2  w-1/5 m-[1px] text-center h-full centering;
+  }
+
+  .submenu-moreFilter {
+    @apply hidden lg:flex shadow-lg rounded-md bg-box h-72 w-44 scale-100 duration-100 z-10 centering flex-col items-start overflow-y-auto absolute top-[75px];
+  }
+
+  .submenu-moreFilter-mobile {
+    @apply lg:hidden absolute visible h-64 duration-150 shadow-lg w-[95.5%] rounded-lg overflow-auto bg-[#131414] right-0 left-0 mx-auto;
   }
 }

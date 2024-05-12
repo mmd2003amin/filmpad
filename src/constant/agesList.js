@@ -1,4 +1,4 @@
-const ages = [
+const agesList = [
   { id: 1, name: "G" },
   { id: 2, name: "N/A" },
   { id: 3, name: "NA" },
@@ -14,4 +14,4 @@ const ages = [
   { id: 13, name: "X" },
 ];
 
-export default ages;
+export default agesList;

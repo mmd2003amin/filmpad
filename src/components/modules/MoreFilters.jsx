@@ -1,60 +1,84 @@
 import React from "react";
 import listMoreFilters from "../../constant/listMoreFilters";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import { BsTriangleFill } from "react-icons/bs";
-import useSubmenu from "../../hooks/useSubmenu";
-import CardSubMenuMoreFilters from "./CardSubMenuMoreFilters";
+import { useDispatch, useSelector } from "react-redux";
+import { closeSubmenu } from "../../features/close/closeSlice";
 
-const MoreFilters = ({ moreFilters, subMenu, setSubMenu }) => {
-  const dataSubmenu = useSubmenu(subMenu);
-  const year = ["از سال", "تا سال"];
+//submenus
+import Country from "./subMenuMoreFilter/country";
+import ShowWith from "./subMenuMoreFilter/showWith";
+import Ages from "./subMenuMoreFilter/ages";
+import IMDbSub from "./subMenuMoreFilter/IMDb";
+import OfTheYearSub from "./subMenuMoreFilter/ofTheYear";
+import UntilTheYearSub from "./subMenuMoreFilter/untilTheYear";
+import useCloseDispatch, {
+  useCloseDispatchAll,
+} from "../../hooks/useCloseDispatch";
+
+const MoreFilters = () => {
+  const dispatch = useDispatch();
+  const filterState = useSelector((state) => state.filter);
+  const closeState = useSelector((state) => state.close);
+
+  const year = [
+    {
+      id: "از سال",
+      name: filterState.ofTheYear ? filterState.ofTheYear : "از سال",
+    },
+    {
+      id: "تا سال",
+      name: filterState.untilTheYear ? filterState.untilTheYear : "تا سال",
+    },
+  ];
 
   const showSubMenuHandler = (e) => {
-    const text = e.target.innerText;
+    const name = e.target.innerText;
+    useCloseDispatch(e.target.id, dispatch);
+
     e.stopPropagation();
-    setSubMenu((prev) => (prev === text ? "" : text));
+    dispatch(closeSubmenu(name));
   };
 
   return (
     <div
+      onClick={(e) => useCloseDispatchAll(e, dispatch)}
       className={`${
-        moreFilters
+        closeState.moreFilter
           ? "top-24 opacity-100 visible"
           : "top-28 opacity-0 invisible"
-      } duration-300 w-full bg-box2 rounded-[30px] absolute right-0 centering justify-evenly mx-auto p-3`}
+      } duration-300 w-full bg-box2 shadow-xl rounded-[30px] absolute right-0 centering justify-evenly mx-auto p-3`}
     >
-      {listMoreFilters.slice(5, 9).map((item) => (
-        <div
-          onClick={showSubMenuHandler}
-          key={item.id}
-          className="more-filters"
-        >
-          <p>{item.name}</p>
-          <MdKeyboardArrowDown
-            className={`${
-              subMenu === item.name && "rotate-180"
-            } duration-200 text-lg`}
-          />
-        </div>
-      ))}
+      {listMoreFilters()
+        .slice(2)
+        .map((item) => (
+          <div
+            key={item.dataset}
+            id={item.dataset}
+            onClick={showSubMenuHandler}
+            className="more-filters"
+          >
+            <p id={item.dataset}>{item.name}</p>
+          </div>
+        ))}
 
       {year.map((item) => (
         <div
-          key={item}
+          id={item.id}
+          key={item.name}
           onClick={showSubMenuHandler}
           className="p-2 relative centering more-filters"
         >
-          <p>{item}</p>
-          <MdKeyboardArrowDown
-            className={`${
-              subMenu === item && "rotate-180"
-            } duration-200 text-lg`}
-          />
+          <p id={item.id}>{item.name}</p>
         </div>
       ))}
 
       <BsTriangleFill className="text-box2 text-2xl absolute -top-4 left-[23%] z-30" />
-      <CardSubMenuMoreFilters data={dataSubmenu} name={subMenu} />
+      <Country />
+      <ShowWith />
+      <Ages />
+      <IMDbSub />
+      <OfTheYearSub />
+      <UntilTheYearSub />
     </div>
   );
 };
